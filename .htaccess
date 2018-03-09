@@ -1,0 +1,32 @@
+Options +FollowSymLinks
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^$		controller/external/home.php	[L]
+RewriteRule ^home$	controller/external/home.php	[L]
+RewriteRule ^login$	controller/external/login.php	[L]
+
+
+RewriteRule ^dashboard$	controller/internal/dashboard.php	[L]
+RewriteRule ^profil$	controller/internal/profil.php		[L]
+RewriteRule ^projects$	controller/internal/projects.php		[L]
+RewriteRule ^entreprises$	controller/internal/entreprises.php		[L]
+RewriteRule ^users$	controller/internal/users.php		[L]
+RewriteRule ^works$	controller/internal/works.php		[L]
+RewriteRule ^work-([0-9]+)$	controller/internal/work.php?work=$1		[L]
+
+RewriteRule ^content$	controller/internal/content.php		[L]
+RewriteRule ^content-presentation$	controller/internal/content_presentation.php		[L]
+RewriteRule ^content-admission$	controller/internal/content_admission.php		[L]
+RewriteRule ^content-modules$	controller/internal/content_modules.php		[L]
+RewriteRule ^content-infos$	controller/internal/content_infos.php		[L]
+
+
+RewriteRule ^groups$	controller/internal/groups.php	[L]
+RewriteRule ^reset$	controller/internal/reset.php	[L]
+RewriteRule ^logout$	controller/internal/logout.php	[L]
+
+errorDocument 404 /controller/external/404.php
+
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST} [R,L]
